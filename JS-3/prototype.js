@@ -65,8 +65,26 @@ console.log([1, 2, 3].reduceTwo());
 
 Array.prototype.myForEach = function () {
   for (let i = 0; i < this.length; i++) {
-    console.log(this[i] , i);
+    console.log(this[i], i);
   }
 };
+
+String.prototype.mySplit = function (separator) {
+  const result = [];
+  let current = "";
+
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === separator) {
+      result.push(current);
+      current = "";
+    } else {
+      current += this[i];
+    }
+  }
+
+  result.push(current); // last part
+  return result;
+};
+console.log("hello world how".mySplit(" "));
 
 console.log([10, 20, 30].myForEach());
